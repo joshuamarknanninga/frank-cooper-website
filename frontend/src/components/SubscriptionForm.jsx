@@ -36,7 +36,10 @@ const SubscriptionForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button type="submit" className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">
+          <button
+            type="submit"
+            className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition transform hover:animate-fadeIn hover:animate-scaleUp"
+          >
             Subscribe
           </button>
         </form>

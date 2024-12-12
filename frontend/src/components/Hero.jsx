@@ -1,7 +1,7 @@
 // frontend/src/components/Hero.jsx
 import React from 'react';
-import heroImage from '../assets/images/hero-placeholder.jpg'; // Ensure this path is correct
 import { Link } from 'react-router-dom';
+import heroImage from '../assets/images/hero-placeholder.jpg'; // Ensure this path is correct
 
 const Hero = () => {
   return (
@@ -15,7 +15,7 @@ const Hero = () => {
             Discover profound insights and deepen your understanding of the Bible through engaging teachings and resources.
           </p>
           <Link to="/about">
-            <button className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition">
+            <button className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition transform hover:animate-fadeIn hover:animate-scaleUp">
               Get Started
             </button>
           </Link>
@@ -29,3 +29,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

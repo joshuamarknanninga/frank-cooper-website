@@ -14,12 +14,12 @@ const cardsData = [
 
 const Cards = () => {
   return (
-    <section className="container mx-auto py-12">
+    <section className="container mx-auto py-12 px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {cardsData.map((card, index) => (
           <Link to={card.link} key={index}>
             <div
-              className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center hover:scale-105 transition-transform duration-300 animate-fadeIn"
+              className="bg-white rounded-lg shadow-lg p-6 flex flex-col items-center transform transition-transform duration-300 hover:animate-fadeIn hover:animate-scaleUp animate-none"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {card.icon}
@@ -33,3 +33,4 @@ const Cards = () => {
 };
 
 export default Cards;
+

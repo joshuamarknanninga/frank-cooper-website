@@ -16,7 +16,7 @@ const MissionaryWork = () => {
             Frank Cooper is dedicated to spreading the teachings of the Bible through various missionary efforts around the globe. Join us in our mission to make a positive impact.
           </p>
           <Link to="/about">
-            <button className="mt-4 bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition">
+            <button className="mt-4 bg-green-500 text-white px-6 py-3 rounded-md hover:bg-green-600 transition transform hover:animate-fadeIn hover:animate-scaleUp">
               Learn More
             </button>
           </Link>
