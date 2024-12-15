@@ -5,13 +5,13 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
-import Podcasts from './pages/Podcasts';
+import Podcasts from './pages/Podcasts'; // Ensure Podcasts.jsx exists
 import PodcastDetail from './pages/PodcastDetail';
-import Blogs from './pages/Blogs';
+import Blogs from './pages/Blogs'; // Ensure Blogs.jsx exists
 import BlogDetail from './pages/BlogDetail';
 import ChatRoom from './pages/ChatRoom';
 import Subscribe from './pages/Subscribe';
-import NotFound from './pages/NotFound'; // Create a 404 page
+import NotFound from './pages/NotFound'; // Optional: 404 page
 
 const App = () => (
   <Router>
