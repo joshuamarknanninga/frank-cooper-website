@@ -1,30 +1,26 @@
-// backend/routes/subscribe.js
+// backend/routes/subscribers.js
 const express = require('express');
 const router = express.Router();
 const Subscriber = require('../models/Subscriber');
 
-// POST /api/subscribe
+// @route   POST /api/subscribers
+// @desc    Add a new subscriber
 router.post('/', async (req, res) => {
   const { email } = req.body;
 
-  // Basic email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    return res.status(400).json({ success: false, message: 'Invalid email address.' });
-  }
+  if (!email) return res.status(400).json({ message: 'Email is required.' });
+
+  const subscriber = new Subscriber({ email });
 
   try {
-    const existingSubscriber = await Subscriber.findOne({ email });
-    if (existingSubscriber) {
-      return res.status(400).json({ success: false, message: 'Email already subscribed.' });
+    const newSubscriber = await subscriber.save();
+    res.status(201).json({ message: 'Subscribed successfully!' });
+  } catch (err) {
+    if (err.code === 11000) { // Duplicate key error
+      res.status(400).json({ message: 'Email is already subscribed.' });
+    } else {
+      res.status(400).json({ message: err.message });
     }
-
-    const newSubscriber = new Subscriber({ email });
-    await newSubscriber.save();
-    res.json({ success: true, message: 'Subscribed successfully.' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, message: 'Server error.' });
   }
 });
 

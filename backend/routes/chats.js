@@ -5,7 +5,6 @@ const Chat = require('../models/Chat');
 
 // @route   GET /api/chats
 // @desc    Get all chat rooms
-// @access  Private (Implement authentication as needed)
 router.get('/', async (req, res) => {
   try {
     const chats = await Chat.find().sort({ createdAt: -1 });
@@ -17,14 +16,12 @@ router.get('/', async (req, res) => {
 
 // @route   GET /api/chats/:id
 // @desc    Get a single chat room by ID
-// @access  Private (Implement authentication as needed)
 router.get('/:id', getChat, (req, res) => {
   res.json(res.chat);
 });
 
 // @route   POST /api/chats
 // @desc    Create a new chat room
-// @access  Private (Implement authentication as needed)
 router.post('/', async (req, res) => {
   const { participants } = req.body;
 
@@ -46,11 +43,10 @@ router.post('/', async (req, res) => {
 
 // @route   DELETE /api/chats/:id
 // @desc    Delete a chat room
-// @access  Private (Implement authentication as needed)
 router.delete('/:id', getChat, async (req, res) => {
   try {
     await res.chat.remove();
-    res.json({ message: 'Deleted Chat Room' });
+    res.json({ message: 'Chat room deleted.' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -62,7 +58,7 @@ async function getChat(req, res, next) {
   try {
     chat = await Chat.findById(req.params.id);
     if (chat == null) {
-      return res.status(404).json({ message: 'Cannot find chat room' });
+      return res.status(404).json({ message: 'Chat room not found.' });
     }
   } catch (err) {
     return res.status(500).json({ message: err.message });

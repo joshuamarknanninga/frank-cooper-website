@@ -4,8 +4,7 @@ const router = express.Router();
 const Blog = require('../models/Blog');
 
 // @route   GET /api/blogs
-// @desc    Get all blog posts
-// @access  Public
+// @desc    Get all blogs
 router.get('/', async (req, res) => {
   try {
     const blogs = await Blog.find().sort({ publishedAt: -1 });
@@ -16,15 +15,13 @@ router.get('/', async (req, res) => {
 });
 
 // @route   GET /api/blogs/:id
-// @desc    Get a single blog post by ID
-// @access  Public
+// @desc    Get a single blog by ID
 router.get('/:id', getBlog, (req, res) => {
   res.json(res.blog);
 });
 
 // @route   POST /api/blogs
-// @desc    Create a new blog post
-// @access  Private (Implement authentication as needed)
+// @desc    Create a new blog
 router.post('/', async (req, res) => {
   const { title, content, author, categories, coverImageUrl } = req.body;
 
@@ -45,26 +42,15 @@ router.post('/', async (req, res) => {
 });
 
 // @route   PUT /api/blogs/:id
-// @desc    Update a blog post
-// @access  Private (Implement authentication as needed)
+// @desc    Update a blog
 router.put('/:id', getBlog, async (req, res) => {
   const { title, content, author, categories, coverImageUrl } = req.body;
 
-  if (title != null) {
-    res.blog.title = title;
-  }
-  if (content != null) {
-    res.blog.content = content;
-  }
-  if (author != null) {
-    res.blog.author = author;
-  }
-  if (categories != null) {
-    res.blog.categories = categories;
-  }
-  if (coverImageUrl != null) {
-    res.blog.coverImageUrl = coverImageUrl;
-  }
+  if (title != null) res.blog.title = title;
+  if (content != null) res.blog.content = content;
+  if (author != null) res.blog.author = author;
+  if (categories != null) res.blog.categories = categories;
+  if (coverImageUrl != null) res.blog.coverImageUrl = coverImageUrl;
 
   try {
     const updatedBlog = await res.blog.save();
@@ -75,12 +61,11 @@ router.put('/:id', getBlog, async (req, res) => {
 });
 
 // @route   DELETE /api/blogs/:id
-// @desc    Delete a blog post
-// @access  Private (Implement authentication as needed)
+// @desc    Delete a blog
 router.delete('/:id', getBlog, async (req, res) => {
   try {
     await res.blog.remove();
-    res.json({ message: 'Deleted Blog' });
+    res.json({ message: 'Blog deleted.' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -92,7 +77,7 @@ async function getBlog(req, res, next) {
   try {
     blog = await Blog.findById(req.params.id);
     if (blog == null) {
-      return res.status(404).json({ message: 'Cannot find blog' });
+      return res.status(404).json({ message: 'Blog not found.' });
     }
   } catch (err) {
     return res.status(500).json({ message: err.message });
