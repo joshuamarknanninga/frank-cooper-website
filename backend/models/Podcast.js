@@ -6,23 +6,17 @@ const podcastSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  description: {
-    type: String,
-  },
+  description: String,
   audioUrl: {
     type: String,
     required: true,
   },
-  coverImageUrl: {
-    type: String, // URL to the cover image
-  },
+  coverImageUrl: String,
   publishedAt: {
     type: Date,
     default: Date.now,
   },
-  duration: {
-    type: String, // e.g., "45:30"
-  },
+  duration: String, // e.g., "45:30"
   author: {
     type: String,
     default: 'Frank Cooper',

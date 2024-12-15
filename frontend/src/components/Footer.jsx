@@ -1,14 +1,13 @@
 // frontend/src/components/Footer.jsx
 import React from 'react';
+import { Container, Segment } from 'semantic-ui-react';
 
-const Footer = () => {
-  return (
-    <footer className="bg-gray-800 text-white py-6 mt-12">
-      <div className="container mx-auto text-center">
-        <p>&copy; {new Date().getFullYear()} Frank Cooper. All rights reserved.</p>
-      </div>
-    </footer>
-  );
-};
+const Footer = () => (
+  <Segment inverted vertical style={{ padding: '2em 0em' }}>
+    <Container textAlign='center'>
+      © {new Date().getFullYear()} Frank Cooper. All rights reserved.
+    </Container>
+  </Segment>
+);
 
 export default Footer;

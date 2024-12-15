@@ -1,45 +1,34 @@
 // frontend/src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container } from 'semantic-ui-react';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Cards from './components/Cards';
-import MissionaryWork from './components/MissionaryWork';
-import SubscriptionForm from './components/SubscriptionForm';
 import Footer from './components/Footer';
+import Home from './pages/Home';
 import About from './pages/About';
-import Podcast from './pages/Podcast';
-import Books from './pages/Books';
-import Classes from './pages/Classes';
-import Blog from './pages/Blog';
-import Shop from './pages/Shop';
+import PodcastDetail from './pages/PodcastDetail';
+import BlogDetail from './pages/BlogDetail';
+import ChatRoom from './pages/ChatRoom';
+import Subscribe from './pages/Subscribe';
 
-const App = () => {
-  return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Cards />
-              <MissionaryWork />
-            </>
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route path="/podcast" element={<Podcast />} />
-        <Route path="/books" element={<Books />} />
-        <Route path="/classes" element={<Classes />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/shop" element={<Shop />} />
-      </Routes>
-      <SubscriptionForm />
-      <Footer />
-    </Router>
-  );
-};
+const App = () => (
+  <Router>
+    <Header />
+    <Container style={{ marginTop: '7em', minHeight: '80vh' }}>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/podcasts/:id" component={PodcastDetail} />
+        <Route path="/podcasts" component={Home} /> {/* Or a separate Podcasts page */}
+        <Route path="/blogs/:id" component={BlogDetail} />
+        <Route path="/blogs" component={Home} /> {/* Or a separate Blogs page */}
+        <Route path="/chat" component={ChatRoom} />
+        <Route path="/subscribe" component={Subscribe} />
+        {/* Add more routes as needed */}
+      </Switch>
+    </Container>
+    <Footer />
+  </Router>
+);
 
 export default App;

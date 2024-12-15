@@ -7,19 +7,15 @@ const blogSchema = new mongoose.Schema({
     required: true,
   },
   content: {
-    type: String, // Consider using Markdown or rich text
+    type: String, // Can be in Markdown or HTML
     required: true,
   },
   author: {
     type: String,
     default: 'Frank Cooper',
   },
-  categories: [{
-    type: String,
-  }],
-  coverImageUrl: {
-    type: String, // URL to the cover image
-  },
+  categories: [String],
+  coverImageUrl: String,
   publishedAt: {
     type: Date,
     default: Date.now,

@@ -1,51 +1,37 @@
 // frontend/src/components/SubscriptionForm.jsx
 import React, { useState } from 'react';
+import { Form, Button, Message } from 'semantic-ui-react';
 import axios from 'axios';
 
 const SubscriptionForm = () => {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('');
+  const [status, setStatus] = useState({ type: '', message: '' });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('Sending...');
-    try {
-      const response = await axios.post('http://localhost:5000/api/subscribe', { email });
-      if (response.data.success) {
-        setStatus('Subscribed successfully!');
-        setEmail('');
-      } else {
-        setStatus(response.data.message || 'Subscription failed.');
-      }
-    } catch (error) {
-      setStatus('An error occurred.');
-      console.error(error);
-    }
+  const handleSubmit = () => {
+    axios.post('/api/subscribe', { email })
+      .then(response => setStatus({ type: 'success', message: response.data.message }))
+      .catch(error => setStatus({ type: 'error', message: error.response?.data?.message || 'Subscription failed.' }));
+    setEmail('');
   };
 
   return (
-    <section className="bg-gray-100 py-12">
-      <div className="container mx-auto text-center">
-        <h2 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row justify-center items-center">
-          <input
-            type="email"
-            required
-            placeholder="Enter your email"
-            className="p-3 rounded-md border border-gray-300 w-full sm:w-auto sm:flex-1 mb-4 sm:mb-0 sm:mr-4"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-600 transition transform hover:animate-fadeIn hover:animate-scaleUp"
-          >
-            Subscribe
-          </button>
-        </form>
-        {status && <p className="mt-4 text-green-600">{status}</p>}
-      </div>
-    </section>
+    <Form success={status.type === 'success'} error={status.type === 'error'} onSubmit={handleSubmit}>
+      <Form.Input
+        label='Email'
+        placeholder='Enter your email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <Button type='submit' primary>Subscribe</Button>
+      {status.message && (
+        <Message
+          success={status.type === 'success'}
+          error={status.type === 'error'}
+          content={status.message}
+        />
+      )}
+    </Form>
   );
 };
 
