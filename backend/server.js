@@ -34,7 +34,7 @@ const apiLimiter = rateLimit({
 app.use('/api/', apiLimiter);
 
 // Serve Static Files (if any)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use(express.static(path.join(__dirname, '../frontend/build')));
 
 // Import Routes
 const podcastsRoute = require('./routes/podcasts');
@@ -50,6 +50,11 @@ app.use('/api/subscribe', subscribeRoute);
 app.use('/api/testimonials', testimonialsRoute);
 app.use('/api/media', mediaRoute);
 app.use('/api/contact', contactRoute);
+
+// The "catchall" handler: for any request that doesn't match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
 
 // Global Error Handler
 app.use((err, req, res, next) => {
