@@ -1,4 +1,5 @@
 // backend/server.js
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -12,7 +13,7 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
+// Middleware Setup
 app.use(cors({
   origin: 'http://localhost:3000', // Frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -29,19 +30,20 @@ const apiLimiter = rateLimit({
 });
 app.use('/api/', apiLimiter);
 
-// Serve Static Files
+// Serve Static Files (if any)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Routes
+// Import Routes
 const podcastsRoute = require('./routes/podcasts');
 const blogsRoute = require('./routes/blogs');
 const cardsRoute = require('./routes/cards');
-const subscribeRoute = require('./routes/subscribe'); // Newly added
+const subscribeRoute = require('./routes/subscribe');
 
+// Use Routes
 app.use('/api/podcasts', podcastsRoute);
 app.use('/api/blogs', blogsRoute);
 app.use('/api/cards', cardsRoute);
-app.use('/api/subscribe', subscribeRoute); // Newly added
+app.use('/api/subscribe', subscribeRoute);
 
 // Global Error Handler
 app.use((err, req, res, next) => {

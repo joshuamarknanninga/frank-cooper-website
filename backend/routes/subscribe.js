@@ -1,7 +1,8 @@
 // backend/routes/subscribe.js
+
 const express = require('express');
 const router = express.Router();
-const Subscriber = require('../models/Subscriber'); // Ensure this model exists
+const Subscriber = require('../models/Subscriber'); // Ensure this path is correct
 
 // @route   POST /api/subscribe
 // @desc    Add a new subscriber

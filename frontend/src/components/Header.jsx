@@ -1,9 +1,10 @@
 // frontend/src/components/Header.jsx
+
 import React from 'react';
 import { Menu, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
-const Header = () => (
+const HeaderComponent = () => (
   <Menu inverted>
     <Container>
       <Menu.Item header as={Link} to="/">
@@ -15,8 +16,8 @@ const Header = () => (
       <Menu.Item as={Link} to="/blogs">
         Blogs
       </Menu.Item>
-      <Menu.Item as={Link} to="/chat">
-        Chat
+      <Menu.Item as={Link} to="/cards">
+        Courses
       </Menu.Item>
       <Menu.Menu position='right'>
         <Menu.Item as={Link} to="/subscribe">
@@ -27,4 +28,4 @@ const Header = () => (
   </Menu>
 );
 
-export default Header;
+export default HeaderComponent;

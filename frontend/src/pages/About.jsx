@@ -1,14 +1,15 @@
 // frontend/src/pages/About.jsx
+
 import React from 'react';
-import { Header, Container } from 'semantic-ui-react';
+import { Container, Header, Segment } from 'semantic-ui-react';
 
 const About = () => (
-  <Container>
+  <Container text style={{ marginTop: '2em' }}>
     <Header as='h2'>About Frank Cooper</Header>
-    <p>
-      {/* Add your about content here */}
-      Frank Cooper is dedicated to spreading the teachings of the Bible through various mediums...
-    </p>
+    <Segment>
+      {/* Add your about page content here */}
+      <p>Frank Cooper is a seasoned professional with expertise in...</p>
+    </Segment>
   </Container>
 );
 

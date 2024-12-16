@@ -1,19 +1,16 @@
 // frontend/src/pages/Home.jsx
+
 import React from 'react';
-import Hero from '../components/Hero';
-import Cards from '../components/Cards';
-import Podcasts from '../components/Podcasts';
-import Blogs from '../components/Blogs';
-import SubscriptionForm from '../components/SubscriptionForm';
+import { Container, Header, Segment } from 'semantic-ui-react';
 
 const Home = () => (
-  <div>
-    <Hero />
-    <Cards />
-    <Podcasts />
-    <Blogs />
-    <SubscriptionForm />
-  </div>
+  <Container text style={{ marginTop: '2em' }}>
+    <Header as='h1'>Welcome to Frank Cooper's Website</Header>
+    <Segment>
+      {/* Add your home page content here */}
+      <p>Explore our podcasts, blogs, and courses to enhance your knowledge!</p>
+    </Segment>
+  </Container>
 );
 
 export default Home;
