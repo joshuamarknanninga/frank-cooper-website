@@ -1,9 +1,7 @@
 /* frontend/src/components/Hero.css */
 
 .hero-section {
-    position: relative;
     height: 100vh;
-    background-image: url('/images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -12,18 +10,8 @@
     text-align: center;
   }
   
-  .hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Overlay for better text readability */
-  }
-  
-  .hero-section > .ui.container {
-    position: relative;
+  .hero-content {
     z-index: 1;
+    position: relative;
   }
   

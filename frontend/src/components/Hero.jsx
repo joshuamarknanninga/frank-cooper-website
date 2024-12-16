@@ -1,25 +1,20 @@
 // frontend/src/components/Hero.jsx
 
 import React from 'react';
-import { Button, Container, Header } from 'semantic-ui-react';
-import './Hero.css'; // Custom CSS for Hero
+import './Hero.css';
+import heroBg from '../assets/images/hero-bg.jpg'; // Ensure the path is correct
 
 const Hero = () => (
-  <div className="hero-section">
-    <Container text>
-      <Header as="h1" inverted>
-        Empowering Your Success
-      </Header>
-      <Header as="h2" inverted>
-        Unlock your potential with expert guidance and resources.
-      </Header>
-      <Button primary size="huge" href="#contact">
-        Get Started
-      </Button>
-      <Button secondary size="huge" href="#services">
-        Learn More
-      </Button>
-    </Container>
+  <div
+    className="hero-section"
+    style={{ backgroundImage: `url(${heroBg})` }}
+  >
+    <div className="hero-content">
+      <h1>Empowering Your Success</h1>
+      <p>Unlock your potential with expert guidance and resources.</p>
+      <button className="ui primary button">Get Started</button>
+      <button className="ui secondary button">Learn More</button>
+    </div>
   </div>
 );
 
