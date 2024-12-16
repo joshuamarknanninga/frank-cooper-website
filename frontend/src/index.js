@@ -1,14 +1,18 @@
 // frontend/src/index.js
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // Updated import
 import App from './App';
-import 'semantic-ui-css/semantic.min.css'; // Import Semantic UI CSS
+import './index.css';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+
+// Create a root.
+const root = ReactDOM.createRoot(container);
+
+// Initial render
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );
-

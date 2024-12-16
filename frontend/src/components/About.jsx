@@ -1,31 +1,15 @@
 // frontend/src/components/About.jsx
 
 import React from 'react';
-import { Container, Header, Image, Grid, Segment } from 'semantic-ui-react';
+import './About.css';
+import aboutImg from '../assets/images/about.jpg'; // Ensure this path is correct
 
 const About = () => (
-  <Segment vertical id="about" style={{ padding: '4em 0em' }}>
-    <Container>
-      <Header as="h2" textAlign="center">
-        About Frank Cooper
-      </Header>
-      <Grid stackable>
-        <Grid.Row>
-          <Grid.Column width={8}>
-            <Image src="/images/about.jpg" size="large" rounded />
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <p>
-              Frank Cooper is a seasoned software engineer with over a decade of experience in developing scalable web applications. His passion for technology and dedication to excellence have empowered countless businesses to achieve their digital goals.
-            </p>
-            <p>
-              Beyond development, Frank is a dedicated mentor, guiding aspiring developers to unlock their full potential through comprehensive courses and one-on-one coaching.
-            </p>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </Container>
-  </Segment>
+  <div id="about" className="about-section">
+    <img src={aboutImg} alt="About Us" />
+    <h2>About Us</h2>
+    <p>Your about us content here.</p>
+  </div>
 );
 
 export default About;
