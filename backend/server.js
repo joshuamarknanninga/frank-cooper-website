@@ -4,8 +4,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
+// const helmet = require('helmet');
+// const rateLimit = require('express-rate-limit');
 const path = require('path');
 
 require('dotenv').config();
@@ -20,15 +20,15 @@ app.use(cors({
   credentials: true,
 }));
 app.use(bodyParser.json());
-app.use(helmet());
+// app.use(helmet());
 
 // Rate Limiting
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again after 15 minutes',
-});
-app.use('/api/', apiLimiter);
+// const apiLimiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 100, // Limit each IP to 100 requests per windowMs
+//   message: 'Too many requests from this IP, please try again after 15 minutes',
+// });
+// app.use('/api/', apiLimiter);
 
 // Serve Static Files (if any)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
