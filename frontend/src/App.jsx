@@ -12,13 +12,18 @@ import Blogs from './pages/Blogs';
 import BlogDetail from './pages/BlogDetail';
 import Cards from './pages/Cards';
 import Subscribe from './pages/Subscribe';
-import NotFound from './pages/NotFound'; // Optional: 404 page
+import NotFound from './pages/NotFound';
+import Home from './pages/Home';
 
 const App = () => (
   <Router>
     <HeaderComponent />
     <div className="container">
       <Routes>
+        <Route path="/" element={<Home />} />
+        {/* Fallback route */}
+        <Route path="*" element={<NotFound />} />
+
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
 

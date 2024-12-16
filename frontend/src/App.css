@@ -1,0 +1,15 @@
+/* frontend/src/App.css */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInAnimation 1s forwards;
+  }
+  
+  @keyframes fadeInAnimation {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

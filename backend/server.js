@@ -4,8 +4,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-// const helmet = require('helmet');
-// const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+const testimonialsRoute = require('./routes/testimonials');
+const contactRoute = require('./routes/contact');
+const mediaRoute = require('./routes/media');
 const path = require('path');
 
 require('dotenv').config();
@@ -23,12 +26,12 @@ app.use(bodyParser.json());
 // app.use(helmet());
 
 // Rate Limiting
-// const apiLimiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: 100, // Limit each IP to 100 requests per windowMs
-//   message: 'Too many requests from this IP, please try again after 15 minutes',
-// });
-// app.use('/api/', apiLimiter);
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again after 15 minutes',
+});
+app.use('/api/', apiLimiter);
 
 // Serve Static Files (if any)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -44,6 +47,9 @@ app.use('/api/podcasts', podcastsRoute);
 app.use('/api/blogs', blogsRoute);
 app.use('/api/cards', cardsRoute);
 app.use('/api/subscribe', subscribeRoute);
+app.use('/api/testimonials', testimonialsRoute);
+app.use('/api/media', mediaRoute);
+app.use('/api/contact', contactRoute);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
