@@ -1,17 +1,18 @@
 /* frontend/src/components/Hero.css */
 
 .hero-section {
-    height: 100vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    color: white;
-    text-align: center;
-  }
-  
-  .hero-content {
-    z-index: 1;
-    position: relative;
-  }
+  background-image: url('/images/hero-bg.jpg'); /* Correct Absolute Path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.hero-section img {
+  width: 100%;
+  height: auto;
+}
   

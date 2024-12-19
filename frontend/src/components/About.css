@@ -1,17 +1,16 @@
-/* frontend/src/components/About.css */
+/* src/components/About.css */
 
 .about-section {
-    background-image: url('../assets/images/about.jpg'); /* Absolute path from public */
-    background-size: cover;
-    background-position: center;
-    padding: 2em;
-    text-align: center;
-  }
-  
-  .about-section img {
-    width: 200px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 1em;
-  }
-  
+  background-image: url('/images/about.jpg'); /* Absolute path from public folder */
+  background-size: cover;
+  background-position: center;
+  padding: 2em;
+  text-align: center;
+}
+
+.about-section img {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 1em;
+}

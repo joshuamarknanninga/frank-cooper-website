@@ -1,4 +1,4 @@
-// frontend/src/components/Navbar.jsx
+// src/components/Navbar.jsx
 
 import React from 'react';
 import { Menu, Container } from 'semantic-ui-react';
