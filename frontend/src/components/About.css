@@ -1,7 +1,7 @@
 /* src/components/About.css */
 
 .about-section {
-  background-image: url('/images/about.jpg'); /* Absolute path from public folder */
+  background-image: url('%PUBLIC_URL%/images/about.jpg'); /* Absolute path from public folder */
   background-size: cover;
   background-position: center;
   padding: 2em;

@@ -1,7 +1,7 @@
 /* frontend/src/components/Hero.css */
 
 .hero-section {
-  background-image: url('/images/hero-bg.jpg'); /* Correct Absolute Path */
+  background-image: url('%PUBLIC_URL%/images/hero-bg.jpg'); /* Correct Absolute Path */
   background-size: cover;
   background-position: center;
   height: 100vh;
