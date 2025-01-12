@@ -2,10 +2,11 @@
 
 import React from 'react';
 import './Hero.css';
+import heroBgImage from '../assets/images/hero-bg.jpg'
 
 const Hero = () => (
   <div className="hero-section">
-  <img src="/images/hero-bg.jpg" alt="Hero Background" className="hero-image" />
+  <img src={heroBgImage} alt="Hero Background" className="hero-image" />
   <h1>Welcome to Frank Cooper</h1>
 </div>
 );
