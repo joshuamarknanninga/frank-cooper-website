@@ -4,19 +4,18 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
-import ErrorBoundary from './components/ErrorBoundary';
+// import ErrorBoundary from './components/ErrorBoundary';
 
 const App = () => (
   <Router>
-    <ErrorBoundary>
+    {/* <ErrorBoundary> */}
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* Add more routes here */}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </ErrorBoundary>
+    {/* </ErrorBoundary> */}
   </Router>
 );
 

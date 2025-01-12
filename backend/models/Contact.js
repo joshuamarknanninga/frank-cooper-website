@@ -1,6 +1,7 @@
 // backend/models/Contact.js
 
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
 
 const contactSchema = new mongoose.Schema({
   name: {

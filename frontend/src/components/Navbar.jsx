@@ -7,22 +7,22 @@ import { HashLink } from 'react-router-hash-link';
 const Navbar = () => (
   <Menu fixed="top" inverted>
     <Container>
-      <Menu.Item as={HashLink} smooth to="#home" header>
+      <Menu.Item as="a" href="#home">
         Frank Cooper
       </Menu.Item>
-      <Menu.Item as={HashLink} smooth to="#about">
+      <Menu.Item as="a" href="#about">
         About
       </Menu.Item>
-      <Menu.Item as={HashLink} smooth to="#services">
+      <Menu.Item as="a" href="#services">
         Services
       </Menu.Item>
-      <Menu.Item as={HashLink} smooth to="#testimonials">
+      <Menu.Item as="a" href="#testimonials">
         Testimonials
       </Menu.Item>
-      <Menu.Item as={HashLink} smooth to="#media">
+      <Menu.Item as="a" href="#media">
         Media
       </Menu.Item>
-      <Menu.Item as={HashLink} smooth to="#contact">
+      <Menu.Item as="a" href="#contact">
         Contact
       </Menu.Item>
     </Container>
