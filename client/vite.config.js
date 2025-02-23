@@ -1,10 +1,17 @@
-// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
 export default defineConfig({
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: `@use "@/styles/variables" as *;`
-        }
+  root: './src',
+  build: {
+    outDir: '../dist',
+    rollupOptions: {
+      input: {
+        main: './src/main.jsx'
       }
     }
-  })
+  },
+  server: {
+    port: 3001
+  }
+});

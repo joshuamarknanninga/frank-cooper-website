@@ -5,6 +5,8 @@ import LoadingFallback from './components/ui/LoadingFallback'
 import Navigation from './components/layout/Navigation'
 import ErrorBoundary from './components/ErrorBoundary'
 import ScrollToTop from './components/ScrollToTop'
+import AnimatedHeader from './components/layout/AnimatedHeader';
+import LightHeader from './components/layout/LightHeader';
 
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
@@ -17,6 +19,8 @@ export default function App() {
 
   return (
     <>
+      <LightHeader />
+      <AnimatedHeader />
       <ScrollToTop />
       <Navigation />
       <ErrorBoundary>
