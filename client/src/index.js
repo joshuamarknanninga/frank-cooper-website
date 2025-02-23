@@ -1,19 +1,22 @@
-// frontend/src/index.js
-
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './tailwind.css';
+// client/src/index.js
+import { createRoot } from 'react-dom/client';
+import { MinistryProvider } from './components/context/MinistryContext'; // Fixed path
 import App from './App';
-import './index.css';
+import './styles/main.scss'; // Verify this path exists
+
+// Initialize web-vitals (optional)
+import { onCLS, onFID, onLCP } from 'web-vitals';
 
 const container = document.getElementById('root');
+const root = createRoot(container);
 
-// Create a root.
-const root = ReactDOM.createRoot(container);
-
-// Initial render
 root.render(
-  <React.StrictMode>
+  <MinistryProvider>
     <App />
-  </React.StrictMode>
+  </MinistryProvider>
 );
+
+// Web Vitals reporting
+onCLS(console.log);
+onFID(console.log);
+onLCP(console.log);

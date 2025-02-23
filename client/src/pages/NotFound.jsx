@@ -1,17 +1,13 @@
-// frontend/src/pages/NotFound.jsx
+import { Link } from 'react-router-dom'
 
-import React from 'react';
-import { Container, Header, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
-const NotFound = () => (
-  <Container textAlign="center" style={{ marginTop: '5em' }}>
-    <Header as="h2">404 - Page Not Found</Header>
-    <p>The page you're looking for doesn't exist.</p>
-    <Button as={Link} to="/" primary>
-      Go to Home
-    </Button>
-  </Container>
-);
-
-export default NotFound;
+export default function NotFound() {
+  return (
+    <div style={{ textAlign: 'center', padding: '2rem' }}>
+      <h1>404 - Page Not Found</h1>
+      <p>The page you're looking for doesn't exist.</p>
+      <Link to="/" style={{ color: '#2c3e50' }}>
+        Return Home
+      </Link>
+    </div>
+  )
+}

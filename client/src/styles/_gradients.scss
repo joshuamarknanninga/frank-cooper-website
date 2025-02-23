@@ -1,0 +1,65 @@
+// styles/_gradients.scss
+$gradient-colors: (
+  #ff6b6b,    // Soft red
+  #4ecdc4,    // Teal
+  #45b7d1,    // Sky blue
+  #96c93d,    // Lime green
+  #ff9a9e,    // Pink
+  #a8edea,    // Light blue
+  #fed6e3,    // Light pink
+  #c3bef0,    // Lavender
+  #b0e0e6     // Powder blue
+);
+
+@function create-gradient($position) {
+  $stops: ();
+  @for $i from 1 through length($gradient-colors) {
+    $color: nth($gradient-colors, $i);
+    $stops: append($stops, $color calc(#{$i * 10%} - 5%), comma);
+  }
+  @return linear-gradient(
+    calc(10deg + (var(--gradient-x, 0.5) * 40deg - 20deg)),
+    $stops
+  );
+}
+
+.gradient-header, .gradient-footer {
+  --gradient-x: 0.5;
+  --gradient-y: 0.5;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: create-gradient(var(--gradient-x, 0.5));
+    transform: 
+      translate(
+        calc(var(--gradient-x) * -50%),
+        calc(var(--gradient-y) * -50%)
+      )
+      rotate(calc(var(--gradient-x) * 20deg - 10deg));
+    opacity: 0.15;
+    transition: 
+      opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  &:hover::before {
+    opacity: 0.25;
+    transform: 
+      translate(
+        calc(var(--gradient-x) * -30%),
+        calc(var(--gradient-y) * -30%)
+      )
+      rotate(calc(var(--gradient-x) * 25deg - 12.5deg));
+  }
+}
+
+// Add to main.scss
+@import 'gradients';

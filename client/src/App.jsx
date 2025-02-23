@@ -1,18 +1,37 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ContactPage from './pages/ContactPage';
-import Header from './components/Header';  // Add this
-import Footer from './components/Footer';  // Add this
+import { lazy, Suspense } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
+import LoadingFallback from './components/ui/LoadingFallback'
+import Navigation from './components/layout/Navigation'
+import ErrorBoundary from './components/ErrorBoundary'
+import ScrollToTop from './components/ScrollToTop'
+
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const Sermons = lazy(() => import('./pages/Sermons'))
+const Contact = lazy(() => import('./pages/Contact'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 export default function App() {
+  const location = useLocation()
+
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-      <Footer />
-    </Router>
-  );
+    <>
+      <ScrollToTop />
+      <Navigation />
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <AnimatePresence mode='wait'>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/sermons" element={<Sermons />} />
+              <Route path="/events" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+        </Suspense>
+      </ErrorBoundary>
+    </>
+  )
 }

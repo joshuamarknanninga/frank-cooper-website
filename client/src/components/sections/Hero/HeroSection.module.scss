@@ -1,0 +1,38 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  height: 90vh;
+  max-height: 1200px;
+  overflow: hidden;
+
+  .overlay {
+    @include overlay-gradient($primary-dark);
+  }
+
+  .bgImage {
+    @include full-cover;
+    object-position: center center;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: $light;
+    padding: 2rem;
+    
+    h1 {
+      @include heading-1;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      @include lead-text;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+}
