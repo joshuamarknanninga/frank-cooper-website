@@ -1,158 +1,204 @@
 /* Ministry Color Scheme */
-
 $primary-color: #2c3e50;
 $secondary-color: #3498db;
 
 :root {
-    --primary: #3A5F0B;  /* Deep ministry green */
-    --secondary: #D4A017; /* Warm gold */
-    --accent: #8B4513;    /* Earthy brown */
-    --light: #F8F5F0;     /* Warm off-white */
-    --dark: #2C2C2C;      /* Charcoal */
-    --overlay: rgba(0,0,0,0.5);
-    --font-heading: 'Merriweather', serif;
-    --font-body: 'Open Sans', sans-serif;
-  }
-  
-  /* Base Styles */
-  body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.8;
-    color: #1e3a8a;
-    background: linear-gradient(
-      135deg,
-      rgba(225, 238, 250, 0.9),
-      rgba(191, 222, 242, 0.8)
-    );
-  }
-  
-  @keyframes gradient-pulse {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+  --primary: #3A5F0B;  /* Deep ministry green */
+  --secondary: #D4A017; /* Warm gold */
+  --accent: #8B4513;    /* Earthy brown */
+  --light: #F8F5F0;     /* Warm off-white */
+  --dark: #2C2C2C;      /* Charcoal */
+  --overlay: rgba(0,0,0,0.5);
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Open Sans', sans-serif;
+}
 
-  /* Hero Section - Full Bleed Image with Overlay */
-  .hero {
-    position: relative;
-    height: 90vh;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .hero::before {
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.8;
+  color: #1e3a8a;
+  background: linear-gradient(
+    135deg,
+    rgba(225, 238, 250, 0.9),
+    rgba(191, 222, 242, 0.8)
+  );
+}
+
+@keyframes gradient-pulse {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero Section - Full Bleed Image with Overlay */
+.hero {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(var(--overlay), var(--overlay));
+    background: var(--overlay);
   }
-  
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    padding: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .hero h1 {
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+
+  h1 {
     font-family: var(--font-heading);
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   }
-  
-  /* Ministry Card Style */
-  .sermon-card {
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .sermon-card:hover {
+}
+
+/* Ministry Card Style */
+.sermon-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+
+  &:hover {
     transform: translateY(-5px);
   }
-  
+
   .sermon-image {
     height: 250px;
     object-fit: cover;
     width: 100%;
   }
-  
+
   .sermon-content {
     padding: 1.5rem;
     border-top: 4px solid var(--secondary);
   }
-  
-  /* Event Calendar */
-  .event-list {
-    border-left: 4px solid var(--primary);
-    padding-left: 2rem;
-  }
-  
-  .event-item {
-    padding: 1.5rem;
-    background: white;
-    margin-bottom: 1.5rem;
-    border-radius: 4px;
-    position: relative;
-  }
-  
-  .event-date {
-    position: absolute;
-    left: -70px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--secondary);
-    color: white;
-    padding: 1rem;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    line-height: 1.2;
-  }
-  
-  /* Ministry Typography */
-  h1, h2, h3 {
-    font-family: var(--font-heading);
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-  }
-  
-  blockquote {
-    border-left: 4px solid var(--secondary);
-    padding-left: 2rem;
-    margin: 2rem 0;
-    font-style: italic;
-    color: var(--accent);
-  }
-  
-  /* Button Styles */
-  .btn-ministry {
-    background: var(--primary);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-  }
-  
-  .btn-ministry:hover {
+}
+
+/* Event Calendar */
+.event-list {
+  border-left: 4px solid var(--primary);
+  padding-left: 2rem;
+}
+
+.event-item {
+  padding: 1.5rem;
+  background: white;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  position: relative;
+}
+
+.event-date {
+  position: absolute;
+  left: -70px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--secondary);
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Ministry Typography */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--secondary);
+  padding-left: 2rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* Button Styles */
+.btn-ministry {
+  background: var(--primary);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+
+  &:hover {
     background: var(--secondary);
     color: var(--dark);
   }
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero-section {
+  text-align: center;
+  padding: 4rem 0;
+  background: 
+    linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)),
+    url('/images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  background: #2c3e50;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+
+  label {
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}

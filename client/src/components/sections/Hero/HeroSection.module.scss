@@ -7,6 +7,12 @@
   max-height: 1200px;
   overflow: hidden;
 
+  .hero-section {
+    background: 
+      linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.3)),
+      url('/images/hero-bg.jpg') center/cover no-repeat;
+  }
+
   .overlay {
     @include overlay-gradient($primary-dark);
   }

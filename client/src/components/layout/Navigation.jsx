@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
-import { Menu, Container, Dropdown, Icon } from 'semantic-ui-react'
-import './Navigation.scss' // Moved CSS to separate file
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { Menu, Container, Dropdown, Icon } from 'semantic-ui-react';
+import './Navigation.scss';
 
 const Navigation = () => {
-  const [isMobile, setIsMobile] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 })
+  const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [gradientPosition, setGradientPosition] = useState({ x: 50, y: 50 });
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-      if (window.innerWidth >= 768) setMenuOpen(false)
-    }
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) setMenuOpen(false);
+    };
 
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleMouseMove = (e) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
-    const x = ((e.clientX - left) / width) * 100
-    const y = ((e.clientY - top) / height) * 100
-    setGradientPosition({ x, y })
-  }
+    const rect = e.currentTarget.getBoundingClientRect();
+    setGradientPosition({
+      x: ((e.clientX - rect.left) / rect.width) * 100,
+      y: ((e.clientY - rect.top) / rect.height) * 100
+    });
+  };
 
   const gradientStyle = {
     background: `radial-gradient(
@@ -32,7 +33,7 @@ const Navigation = () => {
       rgba(110, 123, 251, 0.1),
       rgba(115, 200, 240, 0.2)
     )`
-  }
+  };
 
   return (
     <Menu
@@ -48,43 +49,61 @@ const Navigation = () => {
       onMouseMove={handleMouseMove}
     >
       <Container>
-        <Menu.Item as={NavLink} to="/" header>
+        <Menu.Item
+          as={NavLink}
+          to="/"
+          header
+          className="nav-brand"
+          activeclassname="active"
+        >
           <Icon name="user circle" size="big" />
-          Frank Cooper
+          <span className="brand-text">Frank Cooper Ministries</span>
         </Menu.Item>
 
         {!isMobile ? (
           <>
-            <Menu.Item as={NavLink} to="/about" name="About" activeClassName="active" />
-            <Menu.Item as={NavLink} to="/sermons" name="Sermons" activeClassName="active" />
-            <Menu.Item as={NavLink} to="/events" name="Events" activeClassName="active" />
-            <Menu.Item as={NavLink} to="/contact" name="Contact" activeClassName="active" />
+            <Menu.Item
+              as={NavLink}
+              to="/about"
+              name="About"
+              className="nav-item"
+              activeclassname="active"
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/sermons"
+              name="Sermons"
+              className="nav-item"
+              activeclassname="active"
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/events"
+              name="Events"
+              className="nav-item"
+              activeclassname="active"
+            />
+            <Menu.Item
+              as={NavLink}
+              to="/contact"
+              name="Contact"
+              className="nav-item"
+              activeclassname="active"
+            />
 
-            <Menu.Menu position="right">
-              <Menu.Item
-                as="a"
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon name="facebook f" />
-              </Menu.Item>
-              <Menu.Item
-                as="a"
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon name="twitter" />
-              </Menu.Item>
-              <Menu.Item
-                as="a"
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Icon name="youtube" />
-              </Menu.Item>
+            <Menu.Menu position="right" className="social-icons">
+              {['facebook f', 'twitter', 'youtube'].map((icon) => (
+                <Menu.Item
+                  key={icon}
+                  as="a"
+                  href={`https://${icon.split(' ')[0]}.com`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="social-icon"
+                >
+                  <Icon name={icon} />
+                </Menu.Item>
+              ))}
             </Menu.Menu>
           </>
         ) : (
@@ -93,24 +112,39 @@ const Navigation = () => {
               icon="bars"
               item
               open={menuOpen}
-              onClick={() => setMenuOpen(!menuOpen)}
+              onOpen={() => setMenuOpen(true)}
+              onClose={() => setMenuOpen(false)}
             >
               <Dropdown.Menu>
-                <Dropdown.Item as={NavLink} to="/about" text="About" onClick={() => setMenuOpen(false)} />
-                <Dropdown.Item as={NavLink} to="/sermons" text="Sermons" onClick={() => setMenuOpen(false)} />
-                <Dropdown.Item as={NavLink} to="/events" text="Events" onClick={() => setMenuOpen(false)} />
-                <Dropdown.Item as={NavLink} to="/contact" text="Contact" onClick={() => setMenuOpen(false)} />
+                {['about', 'sermons', 'events', 'contact'].map((route) => (
+                  <Dropdown.Item
+                    key={route}
+                    as={NavLink}
+                    to={`/${route}`}
+                    text={route.charAt(0).toUpperCase() + route.slice(1)}
+                    onClick={() => setMenuOpen(false)}
+                    activeclassname="active"
+                  />
+                ))}
                 <Dropdown.Divider />
-                <Dropdown.Item as="a" href="https://facebook.com" text="Facebook" target="_blank" rel="noopener noreferrer" />
-                <Dropdown.Item as="a" href="https://twitter.com" text="Twitter" target="_blank" rel="noopener noreferrer" />
-                <Dropdown.Item as="a" href="https://youtube.com" text="YouTube" target="_blank" rel="noopener noreferrer" />
+                {['facebook', 'twitter', 'youtube'].map((social) => (
+                  <Dropdown.Item
+                    key={social}
+                    as="a"
+                    href={`https://${social}.com`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    icon={social}
+                    text={social.charAt(0).toUpperCase() + social.slice(1)}
+                  />
+                ))}
               </Dropdown.Menu>
             </Dropdown>
           </Menu.Menu>
         )}
       </Container>
     </Menu>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

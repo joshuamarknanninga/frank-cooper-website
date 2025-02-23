@@ -1,4 +1,41 @@
-.menu .active.item {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-bottom: 2px solid #fff !important;
+.nav-brand {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  
+  .brand-text {
+    font-size: 1.25rem;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
   }
+}
+
+.nav-item {
+  transition: all 0.3s ease !important;
+  &:hover {
+    transform: translateY(-2px);
+  }
+  &.active {
+    border-bottom: 2px solid #D4A017 !important;
+  }
+}
+
+.social-icons {
+  gap: 0.5rem !important;
+  .social-icon {
+    padding: 0.8rem !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease !important;
+    &:hover {
+      background: rgba(255,255,255,0.1) !important;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ui.dropdown .menu {
+    right: 0 !important;
+    left: auto !important;
+  }
+}
