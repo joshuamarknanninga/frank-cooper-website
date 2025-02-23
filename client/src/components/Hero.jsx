@@ -1,14 +1,23 @@
-// frontend/src/components/Hero.jsx
-
-import React from 'react';
-import './Hero.css';
-import heroBgImage from '../assets/images/hero-bg.jpg'
-
-const Hero = () => (
-  <div className="hero-section">
-  <img src={heroBgImage} alt="Hero Background" className="hero-image" />
-  <h1>Welcome to Frank Cooper</h1>
-</div>
-);
-
-export default Hero;
+export default function HeroSection() {
+  return (
+    <section className="hero">
+      <img 
+        src="/hero-bg.jpg" 
+        alt="Church congregation" 
+        className="absolute w-full h-full object-cover"
+      />
+      <div className="hero-content">
+        <h1>Welcome to Frank Cooper Ministries</h1>
+        <p className="text-xl mb-8">Living Faith, Sharing Hope, Building Community</p>
+        <div className="flex gap-4 justify-center">
+          <button className="btn-ministry">
+            Join Us Sunday
+          </button>
+          <button className="btn-ministry bg-secondary text-dark">
+            Watch Live
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
